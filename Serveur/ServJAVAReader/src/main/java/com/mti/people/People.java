@@ -15,25 +15,25 @@ import javax.persistence.*;
 @Table(name="people")
 public class People implements Serializable{
         private Long id;
-        private String login;
-        private String fullname;
+        private String name;
+        private String password;
 
-    @Column(name="fullname")
-    public String getFullname() {
-	return fullname;
+    @Column(name="name")
+    public String getName() {
+	return name;
     }
 
-    public void setFullname(String fullname) {
-	this.fullname = fullname;
+    public void setName(String name) {
+	this.name = name;
     }
 
-    @Column(name="login")
-    public String getLogin() {
-	return login;
+    @Column(name="password")
+    public String getPassword() {
+	return password;
     }
 
-    public void setLogin(String login) {
-	this.login = login;
+    public void setPassword(String password) {
+	this.password = password;
     }
 
     @Id

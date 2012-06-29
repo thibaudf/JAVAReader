@@ -16,6 +16,6 @@ public interface PeopleUseInterface {
     public void remove(People people);
     public void merge(People people);
     public List<People> findAll();    
-    public People findByLogin(String s);
+    public People findByName(String s);
     
 }
