@@ -4,5 +4,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>servjavareader</non-jta-data-source>
     <class>com.mti.people.People</class>
+    <class>com.mti.musique.Musique</class>
   </persistence-unit>
 </persistence>

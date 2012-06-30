@@ -19,12 +19,29 @@
 <context:annotation-config/>
 <context:component-scan base-package="com.mti" />
 
-<bean id="peopleWs" class="com.mti.service.PeopleManager"/>
+<bean id="peopleWs" class="com.mti.service.people.PeopleManager"/>
 
 <!-- REST Service. -->
-<jaxrs:server id="rest" address="/rest/">
+<jaxws:endpoint id="peoplesoap" implementor="#peopleWs" address="/peoplesoap"/>
+<jaxrs:server id="peoplerest" address="/peoplerest/">
     <jaxrs:serviceBeans>
 	<ref bean="peopleWs" />
+    </jaxrs:serviceBeans>
+    <jaxrs:extensionMappings>
+	<entry key="feed" value="application/atom+xml" />
+	<entry key="json" value="application/json" />
+	<entry key="xml" value="application/xml" />
+	<entry key="html" value="text/html" />
+    </jaxrs:extensionMappings>
+</jaxrs:server>
+
+<bean id="musiqueWs" class="com.mti.service.musique.MusiqueManager"/>
+
+<!-- REST Service. -->
+<jaxws:endpoint id="musiquesoap" implementor="#musiqueWs" address="/musiquesoap"/>
+<jaxrs:server id="musiquerest" address="/musiquerest/">
+    <jaxrs:serviceBeans>
+	<ref bean="musiqueWs" />
     </jaxrs:serviceBeans>
     <jaxrs:extensionMappings>
 	<entry key="feed" value="application/atom+xml" />

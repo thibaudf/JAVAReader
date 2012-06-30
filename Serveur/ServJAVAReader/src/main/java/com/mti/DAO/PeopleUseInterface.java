@@ -17,5 +17,6 @@ public interface PeopleUseInterface {
     public void merge(People people);
     public List<People> findAll();    
     public People findByName(String s);
+    public People findByID(Long id);
     
 }

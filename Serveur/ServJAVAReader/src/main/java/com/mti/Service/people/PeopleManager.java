@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mti.service;
+package com.mti.service.people;
 
 import com.mti.DAO.PeopleUseInterface;
 import com.mti.people.People;
+import com.mti.people.Peoples;
 import java.util.List;
 import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("peopleManager")
 @Transactional(propagation= Propagation.REQUIRED, readOnly = true)
-@WebService(endpointInterface="com.mti.service.IPeopleManager")
+@WebService(endpointInterface="com.mti.service.people.IPeopleManager")
 public class PeopleManager implements IPeopleManager{
 
 
@@ -28,25 +29,34 @@ public class PeopleManager implements IPeopleManager{
 
     @Override
     @Transactional(readOnly = false)
-    public void persist(People people) {
+    public void persist(String name, String pass) {
+	People people = new People();
+	people.setName(name);
+	people.setPassword(pass);
 	peopleUse.persist(people);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void remove(People people) {
+    public void remove(Long id) {
+	People people = new People();
+	people.setId(id);
 	peopleUse.remove(people);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void merge(People people) {
+    public void merge(Long id, String name, String pass) {
+	People people = new People();
+	people.setName(name);
+	people.setPassword(pass);
+	people.setId(id);
 	peopleUse.merge(people);
     }
 
     @Override
-    public List<People> findAll() {
-	return peopleUse.findAll();
+    public Peoples findAll() {
+	return new Peoples(peopleUse.findAll());
     }
 
     @Override
@@ -54,5 +64,9 @@ public class PeopleManager implements IPeopleManager{
 	return peopleUse.findByName(s);
     }
 
+    @Override
+    public People findByID(Long i) {
+	return peopleUse.findByID(i);
+    }
 
 }

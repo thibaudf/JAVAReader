@@ -6,6 +6,7 @@ package com.mti.people;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -13,6 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="people")
+@XmlRootElement(name="people")
 public class People implements Serializable{
         private Long id;
         private String name;
